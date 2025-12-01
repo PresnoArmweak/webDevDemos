@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Data</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link rel="shortcut icon" href="#" type="image/x-icon">
+</head>
+
+<body>
+    <h1>Available Records</h1>
+    <div id="recordInfo"></div>
+
+    <script>
+        // Function to fetch stock data and update the DOM
+    async function loadRecords() {
+            try {
+                
+                // get the data from the api
+                const response = await axios.get('http://localhost/cis139-apis/createapi/records.php');
+                const records = response.data; //get the returned json
+
+                console.log(records);
+
+                // Clear the container
+                const container = document.getElementById('recordInfo');
+                container.innerHTML = '';
+
+                // Create the <ul>
+                const ul = document.createElement('ul');
+
+                // Build <li> items
+                records.forEach(record => {
+                    const li = document.createElement('li');
+                    li.textContent = `${record.title}: ${record.price}`;
+                    ul.appendChild(li);
+                });
+
+                // Add list to DOM
+                container.appendChild(ul);
+
+            } catch (error) {
+                console.error(error);
+            }
+        }
+
+        loadRecords();
+    </script>
+</body>
+
+</html>

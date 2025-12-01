@@ -1,0 +1,77 @@
+:root {
+	--bg: #070707;
+	--card: #0f0f0f;
+	--muted: #9aa0a6;
+	--text: #e6eef6;
+	--accent: #1e90ff;
+	--success: #2ecc71;
+	--danger: #ff6b6b;
+	--glass: rgba(255,255,255,0.03);
+}
+
+/* Global layout */
+* { box-sizing: border-box; }
+html,body { height:100%; }
+body {
+	margin: 0;
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+	background: linear-gradient(#0a0a0a 60%);
+	color: var(--text);
+	padding: 28px;
+}
+
+h1, h2 { margin: 0 0 12px 0; font-weight: 600; }
+h1 { font-size: 28px; }
+h2 { font-size: 18px; color: var(--muted); margin-bottom: 18px; }
+
+table {
+	width: 100%;
+	border-collapse: separate;
+	border-spacing: 0;
+	background: var(--card);
+	color: var(--text);
+	border-radius: 10px;
+	overflow: hidden;
+	box-shadow: 0 6px 18px rgba(0,0,0,0.6);
+}
+
+th, td {
+	padding: 14px 16px;
+	text-align: left;
+	font-size: 14px;
+	border-bottom: 1px solid rgba(255,255,255,0.03);
+}
+
+thead th {
+	background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.03));
+	color: var(--muted);
+	font-weight: 600;
+	letter-spacing: 0.02em;
+}
+
+tbody tr:hover td {
+	background: linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+}
+
+tbody tr:nth-child(even) td {
+	background: rgba(255,255,255,0.01);
+}
+
+.stock {
+	display: inline-block;
+	padding: 6px 10px;
+	border-radius: 999px;
+	font-weight: 600;
+	font-size: 13px;
+	color: #031014;
+}
+.stock.in { background: var(--success); }
+.stock.out { background: var(--danger); }
+.stock.unknown { background: var(--muted); color: #0a0a0a; }
+
+@media (max-width: 720px) {
+	th, td { padding: 10px 8px; font-size: 13px; }
+	h1 { font-size: 22px; }
+}
+
+table { margin-top: 12px; }
